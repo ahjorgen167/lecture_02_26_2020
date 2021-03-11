@@ -7,22 +7,10 @@ import './index.css';
 
 import Reducers from './Reducers';
 
-
 const store = createStore(Reducers);
 
-
-/*
-STORE
-count: function CounterReducer(state = 0, action) {
-    if (action.type === "INCREASE") {
-        return state + 1;
-    }
-    return state;
-}
-
-
-
-*/
+console.log("store");
+console.log(store)
 
 //PROVIDER
 // -> state

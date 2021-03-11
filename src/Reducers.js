@@ -1,10 +1,12 @@
 import { combineReducers } from 'redux';
-import CounterReducer from './CounterReducer';
-import TimesClickedReducer from './TimesClickedReducer'
+import CalculatorReducer from './Calculator';
+// import CounterReducer from './CounterReducer';
+// import TimesClickedReducer from './TimesClickedReducer'
 
 export default combineReducers({
-
-    count: CounterReducer, //{type: "INCREASE"}
-    timesClicked: TimesClickedReducer,  //{type: "INCREASE"}
+    calculator: CalculatorReducer,
+    // lastTimeButtonPressed: 
+    // count: CounterReducer, //{type: "INCREASE"}
+    // timesClicked: TimesClickedReducer,  //{type: "INCREASE"}
 
 })
