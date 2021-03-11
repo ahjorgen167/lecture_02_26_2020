@@ -1,104 +1,66 @@
-import React from 'react';
-import CounterIncreaser from './CounterIncreaser';
-// import { infoMap } from './AgeTrackerCode';
-import {connect} from 'react-redux';
+import React, {useState, useEffect, useReducer, useContext } from 'react';
+import { NameContext } from './NameContext';
 
-import {incrementDispatch} from './MasterMapDispatch';
 
-class App extends React.Component {
 
-    constructor(props) {
-        super(props);
-        console.log("constructor")
-        console.log(this.props.dispatch)
-        
-    }
+export default function(p) {
+    
+    const [name, dispatch] = useContext(NameContext)
+    
+    // const stateArr = useState("Disha")
 
-    handleChange(action, event) {
-        const value = event.target.value;
-        this.props.dispatch({
-            type: action,
-            value: value,
-        })
-        // this.setState({
-        //     [key]: Number(event.target.value),
-            
-        // })
-    }
+    // function gradeCalculator(state, action) {
+    //     if (action.type === "INCREASE") {
+    //         return state + 2
+    //     }
+    //     return state;
+    // }
 
-    onclick(action) {
-        this.props.dispatch({type: action})
+    // const [grade, gradeDispatch] = useReducer(gradeCalculator, 100);
+    // const state = stateArr[0]
+    // const setState = stateArr[1]
 
-        // if ("add") {
-        //     this.setState({
-        //         result: this.state.value1 + this.state.value2
-        //     })
-        // }
-    }
+    // function onClick() {
+    //     setState(state + "!")
+    // }
 
-    render() {
-        return (
-            <div>
-                <input value={this.props.value1} onChange={(e) => this.handleChange("SET_VALUE1", e)} />
-                <input value={this.props.value2} onChange={(e) => this.handleChange("SET_VALUE2", e)}/>
-                <h4>Result: {this.props.result} </h4>
-                <button onClick={() => this.onclick("ADD")}>Add</button>
-            </div>
-        )
+    // function improveGrade() {
+    //     gradeDispatch({type: "INCREASE"})
+    // }
 
-    }
+    
 
+    return (
+        <div>
+            <h1 >Hello, {name}</h1>
+            <button onClick={() => dispatch({type: "EXCLAIM"})}>Exclamation Mark</button>
+            <button onClick={() => dispatch({type: "QUESTION"})}>Question Mark</button>
+        </div>
+    )
 }
-//     constructor(props) {
-//         super(props);
 
-//         console.log(this.props)
+// export default (p) => {
 
-//         this.state = {
-//             count: 1,
-//             lastCount: 100
-//         }
-//     }
+//     return (
+//         <div>
+//             <h1>Hello, {p.name}</h1>
+//         </div>
+//     )
 
-//     incrementCount(amt = 1) {
-
-//         this.setState({
-//             count: this.state.count + amt
-//         })
-        
-//     }
-
-//     render() {
-//         return (
-//             <div>
-//                 <h1>The count is: {this.props.countFromState}</h1>
-//                 <h2>The times you've clicked on these buttons: {this.props.timeButtonWasClicked}</h2>
-//                 <button onClick={() => this.props.incrementFunc()}>Increment By 1</button>
-//                 <button onClick={() => this.props.decrementFunc()}>Decrease By 1</button>
-//                 <CounterIncreaser incFunc={(amt) => this.incrementCount(amt)}num={2}/>
-//             </div>
-//         )
-//     }
 // }
 
-let mapDispatchToProps = function(dispatch, props) {
-    console.log(dispatch)
-    return {
-        dispatch: dispatch,
-    }
-}
+// export default (p) => <div> <h1>Hello, {p.name}</h1> </div>
+    
+// export default class App extends React.Component {
 
-let mapStateToProps = function(state, props) {
-    return {
-        value1: state.calculator.value1,
-        value2: state.calculator.value2,
-        result: state.calculator.result,
-    }
-}
 
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(App)
+//         return (
+//            <div>
+//                <h1>Hello, {this.props.name} - You got a {number} on your homewor</h1>
+//            </div>
+//         )
+//     }
 
-// <CounterIncreaser num="2" />
+// }
+
+//<CounterIncreaser num="2" />
