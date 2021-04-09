@@ -12,11 +12,19 @@ function exclamationReducer(state, action) {
     }
 }
 
+
+
 export function NameContextComponent(props) {
+ 
+
     const [nameState, nameDispatch] = useReducer(exclamationReducer, "Isidora")
 
+    function exclaim() {
+        nameDispatch({type: "EXCLAIM"})
+    }
+
     return (
-        <NameContext.Provider value={[nameState, nameDispatch]}>
+        <NameContext.Provider value={{name: nameState, dispatch: nameDispatch, exclaim}}>
             {props.children}
         </NameContext.Provider>
     )
